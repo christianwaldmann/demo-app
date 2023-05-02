@@ -7,7 +7,7 @@ class DemoAppServer(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/plain")
         self.end_headers()
         routes = {
-            "/": "demo-app is working",
+            "/": "demo-app is working!",
             "/healthz": "healthy"
         }
         content = routes[self.path]
