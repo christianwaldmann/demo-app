@@ -6,7 +6,12 @@ class DemoAppServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.end_headers()
-        self.wfile.write(bytes("demo-app is working", "utf-8"))
+        routes = {
+            "/": "demo-app is working",
+            "/healthz": "healthy"
+        }
+        content = routes[self.path]
+        self.wfile.write(bytes(content, "utf-8"))
 
 
 if __name__ == "__main__":
